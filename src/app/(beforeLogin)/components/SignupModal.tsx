@@ -32,12 +32,12 @@ export default function LoginModal() {
           onClick: () => {},
         },
       })
-      router.back()
+      router.push('/')
     }
   }
 
   const onClickClose = () => {
-    router.back()
+    router.push('/')
   }
 
   const onChangeName: ChangeEventHandler<HTMLInputElement> = (e) => {
