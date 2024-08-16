@@ -33,11 +33,13 @@ export default function LoginModal() {
         },
       })
       router.push('/')
+      router.refresh()
     }
   }
 
   const onClickClose = () => {
     router.push('/')
+    router.refresh()
   }
 
   const onChangeName: ChangeEventHandler<HTMLInputElement> = (e) => {
