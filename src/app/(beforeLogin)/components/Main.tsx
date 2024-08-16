@@ -19,13 +19,18 @@ export default function Main() {
 
       <div className={styles.right}>
         <h1>Nostalgia</h1>
-        <h2>지금 가입하세요.</h2>
-        <Link
-          href='/auth/signup'
-          className={styles.signup}
-        >
-          계정 만들기
-        </Link>
+        {!session && (
+          <>
+            <h2>지금 가입하세요.</h2>
+            <Link
+              href='/auth/signup'
+              className={styles.signup}
+            >
+              계정 만들기
+            </Link>
+          </>
+        )}
+
         {session && session.user ? (
           // 로그인 되어있을 경우
           <>
@@ -45,17 +50,8 @@ export default function Main() {
               href='/auth/signin'
               className={styles.signup}
             >
-              로그인하기
-            </Link>
-
-            {/* 새로운 페이지(기본 로그인 폼)가 열림 */}
-            <button
-              className={styles.signup}
-              onClick={() => signIn()}
-            >
               아이디 로그인
-            </button>
-
+            </Link>
             {/*페이지 이동 없이 바로 소셜 로그인 */}
             <button
               className={`${styles.signup} ${styles.kakao}`}
@@ -72,6 +68,14 @@ export default function Main() {
               }
             >
               네이버 로그인
+            </button>
+
+            {/* 새로운 페이지(기본 로그인 폼)가 열림 */}
+            <button
+              className={styles.signup}
+              onClick={() => signIn()}
+            >
+              Next-auth 로그인 이동
             </button>
           </>
         )}
